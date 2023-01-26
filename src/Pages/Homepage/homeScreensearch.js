@@ -12,7 +12,7 @@ const App = ({ data, input }) => {
     const navigation = useNavigation();
     return (
         <View>
-            <FlatList
+            <FlatList style={{marginBottom:150}}
             keyExtractor={keyExtractor}
                 data={data} renderItem={({ item }) => {
                     if (input === "") {

@@ -7,6 +7,7 @@ import auth from '@react-native-firebase/auth'
 import storage from '@react-native-firebase/storage';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Input from "../../Components/LoginInput/Input";
+import { ScrollView } from "react-native-gesture-handler";
 
 function Profile({ navigation }) {
     const [imageName, setImageName] = useState('https://pbs.twimg.com/media/FZukxoeUsAABmXt.jpg');
@@ -29,6 +30,7 @@ function Profile({ navigation }) {
         navigation.addListener("focus", () => setLoading(!loading));
     }, [navigation, loading]);
     return (
+        <ScrollView>
         <SafeAreaView style={styles.container}>
             <View style={styles.person_container}>
                 <Image source={{ uri: imageName.profileImageUrl }} style={styles.image} />
@@ -105,12 +107,15 @@ function Profile({ navigation }) {
              <Text style={styles.text_style}>{user.Description}</Text>
              </View> */}
 
-            <Button color={"#fff"} icon={"account-edit"}
-                onPress={() => navigation.navigate('Edit', { userToUpdate: user })} />
+           
             <View>
+            <Button color={"#fff"} icon={"account-edit"}
+            onPress={() => navigation.navigate('Edit', { userToUpdate: user })} />
                 <Button theme="tertiary" size={15} icon={"logout"} onPress={() => { auth().signOut() }}></Button></View>
         </SafeAreaView>
+        </ScrollView>
     )
-}
+
+        }
 
 export default Profile;

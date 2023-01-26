@@ -37,9 +37,7 @@ function TeamDetailPage({ navigation, route }) {
         )
     }
 
-
-
-
+    //Kullanıcı Arama
     const searchMem = async (name) => {//Sorgu
         const collection = await firestore().collection('users').where('Name', '==', name).get()
         //console.log(collection.docs)
@@ -51,8 +49,6 @@ function TeamDetailPage({ navigation, route }) {
                     })
                 )
             }
-
-
         } catch (error) {
 
             console.log(error)
@@ -78,8 +74,6 @@ function TeamDetailPage({ navigation, route }) {
 
     }
 
-   
-
     return (
         <Provider>
             <SafeAreaView>
@@ -88,8 +82,12 @@ function TeamDetailPage({ navigation, route }) {
                         return (
                             <View key={teams.id}>
                                 <View style={styles.team_container}>
+                               
                                     <Image style={styles.image} source={{ uri: teams.ImageUrl }} />
+                                    <View style={{justifyContent:"space-around"}}>
                                     <Text style={styles.title}>{teams.name}</Text>
+                                    </View>
+                                    
                                 </View>
                                 <View style={styles.inner_container}>
                                     <ImageBackground source={require("../../assets/Soccer_Field_Transparant.svg.png")} resizeMode="stretch" style={styles.backgroundimage} />
@@ -104,6 +102,7 @@ function TeamDetailPage({ navigation, route }) {
 
                                                 <Image style={styles.memberImage} source={{ uri: img }} />
                                                 <Text style={styles.memberText}>{teams.captain}</Text>
+                                              
                                             </TouchableOpacity>
                                         </View>
 
@@ -185,15 +184,51 @@ function TeamDetailPage({ navigation, route }) {
                 <BottomSheet show={show} onDismiss={() => { setshow(false); }}>
 
                     {member.map(mem => {
-
                         func(mem.id)
-
-                        //console.log(mem.id)
-                        //console.log("/userImage/"+mem.id)
-                        return (
-
-                            <View style={{ alignItems: "center" }}>
-
+                        if(mem.isCaptain){
+                            return (
+                           
+                                <View style={{ alignItems: "center" }}>
+    
+                                    <Image style={{ width: 200, height: 200 }} source={{ uri: imageUrl }} />
+    
+                                    <Text style={{ fontSize: 25, color: "black", fontWeight: "bold", padding: 10 }}>{mem.Name}</Text>
+                                    <View style={styles.memContainer}>
+                                        <Text style={{ fontSize: 15, color: "gray", fontWeight: "bold" }} >iletişim: {mem.email}</Text>
+                                    </View>    
+    
+                                    <View style={styles.memContainer}>
+                                        <Text style={{ fontSize: 15, color: "gray", fontWeight: "bold" }} > Age:{mem.Age}</Text>
+    
+                                    </View >
+                                    <View style={styles.memContainer}>
+                                        <Text style={{ fontSize: 15, color: "gray", fontWeight: "bold" }} >City: {mem.City}</Text>
+                                    </View>
+                                    <View style={styles.memContainer}>
+                                        <Text style={{ fontSize: 15, color: "gray", fontWeight: "bold" }} >Description: {mem.Description}</Text>
+                                    </View>
+                                    <View style={styles.memContainer}>
+                                        <Text style={{ fontSize: 15, color: "gray", fontWeight: "bold" }} >Height: {mem.Height}</Text>
+                                    </View>
+                                    <View style={styles.memContainer}>
+                                        <Text style={{ fontSize: 15, color: "gray", fontWeight: "bold" }} >Team:{mem.Team}</Text>
+                                    </View>
+                                    <View style={styles.memContainer}>
+                                        <Text style={{ fontSize: 15, color: "gray", fontWeight: "bold" }} >Position: {mem.Position}</Text>
+                                    </View>
+                                    <View style={styles.memContainer}>
+                                        <Text style={{ fontSize: 15, color: "gray", fontWeight: "bold" }} >Weight: {mem.Weight}</Text>
+                                    </View>                                
+                                 
+                                </View>
+    
+    
+                            )
+                        }
+                        else{
+                            return(
+                                <View style={{ alignItems: "center" }}>
+    
                                 <Image style={{ width: 200, height: 200 }} source={{ uri: imageUrl }} />
 
                                 <Text style={{ fontSize: 25, color: "black", fontWeight: "bold", padding: 10 }}>{mem.Name}</Text>
@@ -220,20 +255,19 @@ function TeamDetailPage({ navigation, route }) {
                                 </View>
                                 <View style={styles.memContainer}>
                                     <Text style={{ fontSize: 15, color: "gray", fontWeight: "bold" }} >Weight: {mem.Weight}</Text>
+                                </View>  
                                 </View>
-                                <View style={styles.memContainer}>
-                                    <Text style={{ fontSize: 15, color: "gray", fontWeight: "bold" }} >id: {mem.id}</Text>
-                                </View>
+                            )
 
-
-                            </View>
-
-
-                        )
-                    }
-                    )
-
-                    }
+                        }
+                        
+                        
+                        
+                        
+                        
+                        
+                        })}
+                    
                 </BottomSheet>
             </View>
 

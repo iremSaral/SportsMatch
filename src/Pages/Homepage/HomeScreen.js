@@ -64,7 +64,7 @@ return(
             style={styles.searchInputStyle}
             onChangeText={(newText)=>{
                 var letter=/^[A-Za-z]+$/;
-                if(newText.length>30)
+                if(newText.length>12)
                 setError("Query too long")
 
                else if(newText.match(letter) || newText.match(" ")){

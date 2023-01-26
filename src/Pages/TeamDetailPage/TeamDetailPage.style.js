@@ -30,14 +30,15 @@ const styles = StyleSheet.create({
         marginTop:24,
     },
     members_container:{
-        width: Dimensions.get('window').width/1.08,
-        height: Dimensions.get('window').height/2,
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height/1.8,
         padding:8,
     },
     members:{
         flexDirection:'column',
         justifyContent:'center',
         alignItems:'center',
+        paddingTop:10,
     },
     memberImage:{
         height:54,
@@ -48,7 +49,6 @@ const styles = StyleSheet.create({
     },
     memberText:{
         color:'black',
-        marginBottom:22,
         fontStyle:'italic'
     },
     hrElement:{
@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
 
     backgroundimage:{
         flex:1,
-        width: Dimensions.get('window').width/1.08,
-        height: Dimensions.get('window').height/2,
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height/1.6,
         
     },
     forvet:{
@@ -75,17 +75,20 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         alignContent:'center',
         justifyContent:'space-between',
+        padding:30,
+        marginTop:20
     },
     defans:{
         display:'flex',
         flexDirection:'row',
         alignContent:'center',
         justifyContent:'space-around',
+     
     },
     kaleci:{
         display:'flex',
         alignItems:'center',
+        marginTop:30
     },
 })
-
 export default styles;

@@ -19,7 +19,7 @@ import CreateTeam from './Pages/CreateTeamPage/CreateTeamPage';
 import firestore from '@react-native-firebase/firestore';
 import TeamDetailPage from './Pages/TeamDetailPage/TeamDetailPage';
 import AuthFirst from './Pages/auth/AuthFirstPage';
-
+import MyDetailTeam from './Pages/MyTeamDetailPage';
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 const TabTop = createMaterialTopTabNavigator();
@@ -122,7 +122,7 @@ export default function App() {
         />
         <Tab.Screen
           name="TeamStack"
-          component={TeamStack}
+          component={MyDetailTeam}
           options={{
             tabBarLabel: 'Team',
             tabBarIcon: ({ color }) => (
